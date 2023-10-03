@@ -1,0 +1,23 @@
+- name: monitoring
+  hosts: all
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: Ensure directory exists for prometheus conf
+      become: yes
+      ansible.builtin.file:
+        path: /opt/bitnami/prometheus/conf/
+        state: directory
+        mode: '0755'
+        recurse: yes
+        owner: pi
+        group: pi
+
+    - name: Copy prometheus config file
+      ansible.builtin.copy:
+        src: /home/osboxes/Documents/PERSONNEL/yotflix/ansible/prometheus/prometheus.yml
+        dest: /opt/bitnami/prometheus/conf/prometheus.yml
+        force: true
+        mode: '0644'
+        owner: pi
+        group: pi
