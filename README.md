@@ -12,7 +12,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-<h3 align="center">Project to challenge my skills early learned :)</h3>
+<h3 align="center">Project to challenge the skills I learned recently :)</h3>
   <p align="center">
     <br />
     <a href="https://github.com/Ysadsir/yotflix"><strong>Explore the docs »</strong></a>
