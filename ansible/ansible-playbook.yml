@@ -15,7 +15,7 @@
 
     - name: Copy prometheus config file
       ansible.builtin.copy:
-        src: /home/osboxes/Documents/PERSONNEL/yotflix/ansible/prometheus/prometheus.yml
+        src: ./prometheus/prometheus.yml
         dest: /opt/bitnami/prometheus/conf/prometheus.yml
         force: true
         mode: '0644'
