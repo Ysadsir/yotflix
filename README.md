@@ -36,11 +36,7 @@ Deployments for jellyfin, deluge and jackett in my own k3s cluster made with 3 R
 
 ### Built With
 
-* [![K3s][K3s]][K3s-url]* [![Css][Css3]][Css-url]
-* [![Html][Html5]][Html-url]
-* [![Css][Css3]][Css-url]
-
-
+* [![K3s][K3s]][K3s-url]
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -109,7 +105,7 @@ Project Link: [https://github.com/Ysadsir/yotflix](https://github.com/Ysadsir/yo
 [linkedin-url]: https://linkedin.com/in/yves-guillaume-herve
 [product-screenshot]: images/screenshot.png
 
-[K3s]: https://img.shields.io/badge/html5-FFFFFF?style=for-the-badge&logo=html5&logoColor=FFC61C
+[K3s]: https://img.shields.io/badge/k3s-FFFFFF?style=for-the-badge&logo=k3s&logoColor=FFC61C
 [K3s-url]: https://k3s.io/
 
   
