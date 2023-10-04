@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: jackett
+  name: jackett-pvc-config
+  namespace: yotflix
+spec:
+  storageClassName: ""
+  volumeName: jackett-pv-config
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 250Mi

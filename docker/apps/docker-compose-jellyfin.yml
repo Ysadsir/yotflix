@@ -1,0 +1,29 @@
+version: '3.5'
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    # Optional - alternative address used for autodiscovery
+    environment:
+      - TZ=Etc/UTC
+      - JELLYFIN_PublishedServerUrl=http://yotFlix.com
+    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    user: 0:0
+    network_mode: 'host'
+    devices:
+      - /dev/vcsm:/dev/vcsm
+      - /dev/vchiq:/dev/vchiq
+      - /dev/video10:/dev/video10
+      - /dev/video11:/dev/video11
+      - /dev/video12:/dev/video12
+    volumes:
+      - ./jellyfin/config:/config
+      - ./jellyfin/cache:/cache
+      - ./jellyfin/media:/media
+      - ./jellyfin/media2:/media2:ro
+      - /opt/vc/lib:/opt/vc/lib
+    ports:
+      - 8096:8096
+    restart: 'unless-stopped'

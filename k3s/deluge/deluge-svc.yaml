@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: deluge
+  name: deluge-svc
+  namespace: yotflix
+spec:
+  type: LoadBalancer
+  ports:
+    - name: "8112"
+      port: 8112
+      targetPort: 8112
+    - name: "6881"
+      port: 6881
+      targetPort: 6881
+    - name: 6881-udp
+      port: 6881
+      protocol: UDP
+      targetPort: 6881
+  selector:
+    app: deluge
+status:
+        loadBalancer: {}

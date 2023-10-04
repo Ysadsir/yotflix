@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jackett
+  name: jackett-dpl
+  namespace: yotflix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jackett
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: jackett
+    spec:
+      nodeName: pi-node02      
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+        - 8.8.8.8
+        options:
+        - name: ndots
+          value: "5"
+        searches:
+        - yotflix.svc.cluster.local
+        - svc.cluster.local
+        - cluster.local
+      containers:
+        - env:
+            - name: AUTO_UPDATE
+              value: "true"
+            - name: PGID
+              value: "0"
+            - name: PUID
+              value: "0"
+            - name: RUN_OPTS
+            - name: TZ
+              value: Etc/UTC
+          image: lscr.io/linuxserver/jackett:latest
+          name: jackett
+          ports:
+            - containerPort: 9117
+          resources: {}
+          volumeMounts:
+            - mountPath: /config
+              name: jackett-config
+            - mountPath: /downloads
+              name: jackett-downloads
+      restartPolicy: Always
+      volumes:
+        - name: jackett-config
+          persistentVolumeClaim:
+            claimName: jackett-pvc-config
+        - name: jackett-downloads
+          persistentVolumeClaim:
+            claimName: jackett-pvc-blackhole
+status: {}

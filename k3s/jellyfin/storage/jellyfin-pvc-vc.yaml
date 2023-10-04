@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: jellyfin
+  name: jellyfin-pvc-vc
+  namespace: yotflix
+spec:
+  storageClassName: ""
+  volumeName: jellyfin-pv-vc
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 250Mi
+status: {}

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: jackett
+  name: jackett-pvc-blackhole
+  namespace: yotflix
+spec:
+  storageClassName: ""
+  volumeName: jackett-pv-blackhole
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

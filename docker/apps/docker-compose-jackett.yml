@@ -1,0 +1,17 @@
+version: "3.5"
+services:
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/UTC
+      - AUTO_UPDATE=true #optional
+      - RUN_OPTS= #optional
+    volumes:
+      - ./jackett/data:/config
+      - ./jackett/blackhole:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped

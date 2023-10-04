@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  creationTimestamp: "2023-09-25T08:18:20Z"
+  generation: 2
+  name: jellyfin-igr
+  namespace: yotflix
+  resourceVersion: "144178"
+  uid: 8f2d0b91-e242-4a55-b771-131b2f2c4903
+spec:
+  ingressClassName: traefik
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: jellyfin-svc
+            port:
+              number: 8096
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.1.25
+    - ip: 192.168.1.26
+    - ip: 192.168.1.27

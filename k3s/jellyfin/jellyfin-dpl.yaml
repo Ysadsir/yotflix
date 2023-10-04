@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jellyfin
+  name: jellyfin-dpl
+  namespace: yotflix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      nodeName: pi-node02      
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+        - 8.8.8.8
+        options:
+        - name: ndots
+          value: "5"
+        searches:
+        - yotflix.svc.cluster.local
+        - svc.cluster.local
+        - cluster.local
+      containers:
+        - env:
+            - name: JELLYFIN_PublishedServerUrl
+              value: http://yotFlix.com
+            - name: TZ
+              value: Etc/UTC
+          image: lscr.io/linuxserver/jellyfin:latest
+          name: jellyfin
+          ports:
+            - containerPort: 8096
+          resources: {}
+          volumeMounts:
+            - mountPath: /config
+              name: jellyfin-config
+            - mountPath: /cache
+              name: jellyfin-cache
+            - mountPath: /media
+              name: jellyfin-media
+            - mountPath: /media2
+              name: jellyfin-media2
+              readOnly: true
+            - mountPath: /opt/vc/lib
+              name: jellyfin-vc
+      restartPolicy: Always
+      volumes:
+        - name: jellyfin-config
+          persistentVolumeClaim:
+            claimName: jellyfin-pvc-config
+        - name: jellyfin-cache
+          persistentVolumeClaim:
+            claimName: jellyfin-pvc-cache
+        - name: jellyfin-media
+          persistentVolumeClaim:
+            claimName: jellyfin-pvc-media
+        - name: jellyfin-media2
+          persistentVolumeClaim:
+            claimName: jellyfin-pvc-media2
+            readOnly: true
+        - name: jellyfin-vc
+          persistentVolumeClaim:
+            claimName: jellyfin-pvc-vc
+status: {}

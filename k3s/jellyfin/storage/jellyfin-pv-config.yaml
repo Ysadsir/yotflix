@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-pv-config
+  labels:
+    app: jellyfin
+spec:
+  storageClassName: ""
+  claimRef:
+    name: jellyfin-pvc-config
+    namespace: yotflix  
+  capacity:
+    storage: 250Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/config"
