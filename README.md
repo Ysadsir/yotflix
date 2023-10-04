@@ -37,7 +37,13 @@ Deployments for jellyfin, deluge and jackett in my own k3s cluster made with 3 R
 ### Built With
 
 * [![K3s][K3s]][K3s-url]
-
+* [![Docker][Docker]][Docker-url]
+* [![Ansible][Ansible]][Ansible-url]
+* [![Raspberrypi][Raspberrypi]][Raspberrypi-url]
+* [![Jellyfin][Jellyfin]][Jellyfin-url]
+* [![Prometheus][Prometheus]][Prometheus-url]
+* [![Grafana][Grafana]][Grafana-url]
+  
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -117,5 +123,16 @@ Project Link: [https://github.com/Ysadsir/yotflix](https://github.com/Ysadsir/yo
 
 [K3s]: https://img.shields.io/badge/k3s-FFFFFF?style=for-the-badge&logo=k3s&logoColor=FFC61C
 [K3s-url]: https://k3s.io/
-
+[Docker]: https://img.shields.io/badge/docker-FFFFFF?style=for-the-badge&logo=docker&logoColor=2496ED
+[Docker-url]: https://www.docker.com/
+[Ansible]: https://img.shields.io/badge/ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=FFFFFF
+[Ansible-url]: https://www.ansible.com/
+[Raspberrypi]: https://img.shields.io/badge/raspberrypi-FFFFFF?style=for-the-badge&logo=raspberrypi&logoColor=A22846
+[Raspberrypi-url]: https://www.raspberrypi.com/
+[Jellyfin]: https://img.shields.io/badge/jellyfin-000000?style=for-the-badge&logo=jellyfin&logoColor=00A4DC
+[Jellyfin-url]: https://jellyfin.org/
+[Prometheus]: https://img.shields.io/badge/prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=FFFFFF
+[Prometheus-url]: https://prometheus.io/
+[Grafana]: https://img.shields.io/badge/grafana-000000?style=for-the-badge&logo=grafana&logoColor=F46800
+[Grafana-url]: https://grafana.com/
   
