@@ -1,0 +1,52 @@
+- name: monitoring
+  hosts: all
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: Ensure directory exists for prometheus conf
+      become: yes
+      ansible.builtin.file:
+        path: /opt/bitnami/prometheus/conf/
+        state: directory
+        mode: '0755'
+        recurse: yes
+        owner: pi
+        group: pi
+
+    - name: Copy prometheus config file
+      ansible.builtin.copy:
+        src: ./prometheus/prometheus.yml
+        dest: /opt/bitnami/prometheus/conf/prometheus.yml
+        force: true
+        mode: '0644'
+        owner: pi
+        group: pi
+
+    - name: Ensure directory exists for grafana conf
+      become: yes
+      ansible.builtin.file:
+        path: /opt/grafana/conf/
+        state: directory
+        mode: '0755'
+        recurse: yes
+        owner: pi
+        group: pi
+
+    - name: Copy grafana datasource config file
+      ansible.builtin.copy:
+        src: ./grafana/datasources.yml
+        dest: /opt/grafana/conf/datasources.yml
+        force: true
+        mode: '0644'
+        owner: pi
+        group: pi
+
+    - name: Copy grafana dashboards directory
+      ansible.builtin.copy:
+        src: ./grafana/dashboards
+        dest: /opt/grafana/conf/
+        force: true
+        directory_mode: any 
+        mode: '0644'
+        owner: pi
+        group: pi
