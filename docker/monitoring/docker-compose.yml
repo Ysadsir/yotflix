@@ -1,14 +1,33 @@
-version: "3.5"
+version: "3.8"
+networks:
+  monitoring-network:
+    
 services:
   prometheus:
     image: bitnami/prometheus:latest
     container_name: prometheus
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Etc/UTC
-    volumes:
-      - /opt/bitnami/prometheus/conf/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml
+    user: 'pi'
+    group: 'pi'
     ports:
       - 9090:9090
+    networks:
+      - name: monitoring-network
+    volumes:
+      - /opt/bitnami/prometheus/conf/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml
     restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    user: 'pi'
+    group: 'pi'
+    ports:
+      - '3000:3000'
+    networks:
+      - name: monitoring-network
+    volumes:
+      - "/opt/grafana/conf/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml"
+      - "/opt/grafana/conf/dashboards:/etc/grafana/provisioning/dashboards:rw"
+    restart: unless-stopped
+    depends_on: 
+      - prometheus
