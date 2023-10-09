@@ -50,3 +50,13 @@
         mode: '0644'
         owner: pi
         group: pi
+
+    - name: Ensure directory exists for docker conf
+      become: yes
+      ansible.builtin.file:
+        path: /opt/docker/conf/
+        state: directory
+        mode: '0755'
+        recurse: yes
+        owner: pi
+        group: pi

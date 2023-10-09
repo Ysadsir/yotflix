@@ -1,0 +1,20 @@
+- name: deploy docker compose
+  hosts: all
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: Ensure docker compose is present
+      ansible.builtin.apt:
+        name: docker-compose-plugin
+        state: present
+
+    - name: Copy docker-compose file
+      ansible.builtin.copy:
+        src: ../../docker/monitoring/docker-compose.yml
+        dest: /opt/docker/conf/
+        mode: '0644'
+        owner: pi
+        group: pi
+
+    - name: Run docker compose
+      command: docker compose -f /opt/docker/conf/docker-compose.yml up -d
