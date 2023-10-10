@@ -16,5 +16,8 @@
         owner: pi
         group: pi
 
-    - name: Run docker compose
+    - name: Stop services (docker compose)
+      command: docker compose -f /opt/docker/conf/docker-compose.yml down
+
+    - name: Start services (docker compose)
       command: docker compose -f /opt/docker/conf/docker-compose.yml up -d
