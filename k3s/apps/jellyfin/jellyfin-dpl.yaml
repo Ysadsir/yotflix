@@ -17,7 +17,6 @@ spec:
       labels:
         app: jellyfin
     spec:
-      nodeName: pi-node02      
       dnsPolicy: "None"
       dnsConfig:
         nameservers:
@@ -39,7 +38,6 @@ spec:
           name: jellyfin
           ports:
             - containerPort: 8096
-          resources: {}
           volumeMounts:
             - mountPath: /config
               name: jellyfin-config
@@ -70,4 +68,3 @@ spec:
         - name: jellyfin-vc
           persistentVolumeClaim:
             claimName: jellyfin-pvc-vc
-status: {}

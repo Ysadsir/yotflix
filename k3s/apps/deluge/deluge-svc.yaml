@@ -20,5 +20,3 @@ spec:
       targetPort: 6881
   selector:
     app: deluge
-status:
-        loadBalancer: {}
