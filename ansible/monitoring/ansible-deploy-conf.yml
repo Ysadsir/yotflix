@@ -6,17 +6,17 @@
     - name: Ensure directory exists for prometheus conf
       become: yes
       ansible.builtin.file:
-        path: /opt/bitnami/prometheus/conf/
+        path: /opt/bitnami/prometheus/conf/rules
         state: directory
         mode: '0755'
         recurse: yes
         owner: pi
         group: pi
 
-    - name: Copy prometheus config file
+    - name: Copy prometheus config files
       ansible.builtin.copy:
-        src: ./prometheus/prometheus.yml
-        dest: /opt/bitnami/prometheus/conf/prometheus.yml
+        src: ./prometheus/
+        dest: /opt/bitnami/prometheus/conf/
         force: true
         mode: '0644'
         owner: pi
@@ -32,21 +32,11 @@
         owner: pi
         group: pi
 
-    - name: Copy grafana datasource config file
+    - name: Copy grafana config files
       ansible.builtin.copy:
-        src: ./grafana/datasources.yml
-        dest: /opt/grafana/conf/datasources.yml
-        force: true
-        mode: '0644'
-        owner: pi
-        group: pi
-
-    - name: Copy grafana dashboards directory
-      ansible.builtin.copy:
-        src: ./grafana/dashboards
+        src: ./grafana/
         dest: /opt/grafana/conf/
         force: true
-        directory_mode: any 
         mode: '0644'
         owner: pi
         group: pi

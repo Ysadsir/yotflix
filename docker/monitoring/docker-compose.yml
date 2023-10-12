@@ -6,7 +6,7 @@ services:
     ports:
       - 9090:9090
     volumes:
-      - /opt/bitnami/prometheus/conf/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml
+      - /opt/bitnami/prometheus/conf:/opt/bitnami/prometheus/conf
     restart: unless-stopped
 
   grafana:

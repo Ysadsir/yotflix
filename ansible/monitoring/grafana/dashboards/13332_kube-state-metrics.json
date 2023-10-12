@@ -2717,7 +2717,7 @@
       "type": "table-old"
     }
   ],
-  "refresh": "",
+  "refresh": "5s",
   "schemaVersion": 38,
   "style": "dark",
   "tags": [
@@ -2782,9 +2782,9 @@
       {
         "allValue": "",
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": "yotflix",
+          "value": "yotflix"
         },
         "datasource": {
           "type": "prometheus",
@@ -2817,7 +2817,7 @@
     ]
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -2844,7 +2844,7 @@
       "30d"
     ]
   },
-  "timezone": "browser",
+  "timezone": "Europe/Paris",
   "title": "kube-state-metrics-v2",
   "uid": "garysdevil-kube-state-metrics-v2",
   "version": 2,

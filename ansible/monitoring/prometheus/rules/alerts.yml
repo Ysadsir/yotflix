@@ -1,0 +1,18 @@
+groups:
+  - name: my-alerts
+    rules:
+    - alert: NodeExporterDown
+      expr: up{job="prometheus-node-exporter"} == 0
+      for: 1m
+
+    - alert: ClusterNodeMasterNotReady 
+      expr: kube_node_status_condition{condition="Ready", node="pi-master", status="true"} == 0 
+      for: 1m
+
+    - alert: ClusterNode01NotReady 
+      expr: kube_node_status_condition{condition="Ready", node="pi-node01", status="true"} == 0 
+      for: 1m
+
+    - alert: ClusterNode02NotReady 
+      expr: kube_node_status_condition{condition="Ready", node="pi-node02", status="true"} == 0 
+      for: 1m

@@ -1,0 +1,8 @@
+groups:
+  - name: my-rules
+    rules:
+    - record: job:free_memory_percent
+      expr: 100 - (100 * node_memory_MemFree_bytes / node_memory_MemTotal_bytes)
+
+    - record: job:node_cpu
+      expr: avg without(cpu) (rate(node_cpu_seconds_total{mode="idle"}[5m]))
