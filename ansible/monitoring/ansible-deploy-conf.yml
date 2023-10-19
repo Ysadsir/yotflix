@@ -3,6 +3,17 @@
   vars_files:
     - secrets.yml
   tasks:
+    - name: Ensure all directories are removed before creating
+      tags: delete_dir
+      become: yes
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /opt/bitnami
+        - /opt/grafana
+        - /opt/docker
+
     - name: Ensure directory exists for prometheus conf
       become: yes
       ansible.builtin.file:

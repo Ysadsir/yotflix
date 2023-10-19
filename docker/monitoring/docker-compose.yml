@@ -16,7 +16,7 @@ services:
       - 9093:9093
       - 5001:5001
     volumes:
-      - /opt/bitnami/alertmanager/conf/alertmanager.yml:/opt/bitnami/alertmanager/conf/alertmanager.yml
+      - /opt/bitnami/alertmanager/conf/config.yml:/opt/bitnami/alertmanager/conf/config.yml
     depends_on: 
       - prometheus
 
