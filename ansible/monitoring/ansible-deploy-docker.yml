@@ -1,5 +1,5 @@
 - name: deploy docker compose
-  hosts: all
+  hosts: server1
   vars_files:
     - secrets.yml
   tasks:

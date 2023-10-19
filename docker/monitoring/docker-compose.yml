@@ -9,6 +9,17 @@ services:
       - /opt/bitnami/prometheus/conf:/opt/bitnami/prometheus/conf
     restart: unless-stopped
 
+  alertmanager:
+    image: bitnami/alertmanager:latest
+    container_name: alertmanager
+    ports:
+      - 9093:9093
+      - 5001:5001
+    volumes:
+      - /opt/bitnami/alertmanager/conf/alertmanager.yml:/opt/bitnami/alertmanager/conf/alertmanager.yml
+    depends_on: 
+      - prometheus
+
   grafana:
     image: grafana/grafana
     container_name: grafana

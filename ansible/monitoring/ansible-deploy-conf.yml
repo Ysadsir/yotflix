@@ -1,5 +1,5 @@
 - name: monitoring
-  hosts: all
+  hosts: server1
   vars_files:
     - secrets.yml
   tasks:
@@ -17,6 +17,25 @@
       ansible.builtin.copy:
         src: ./prometheus/
         dest: /opt/bitnami/prometheus/conf/
+        force: true
+        mode: '0644'
+        owner: pi
+        group: pi
+
+    - name: Ensure directory exists for alertmanager conf
+      become: yes
+      ansible.builtin.file:
+        path: /opt/bitnami/alertmanager/conf
+        state: directory
+        mode: '0755'
+        recurse: yes
+        owner: pi
+        group: pi
+
+    - name: Copy alertmanager config files
+      ansible.builtin.copy:
+        src: ./alertmanager/
+        dest: /opt/bitnami/alertmanager/conf/
         force: true
         mode: '0644'
         owner: pi
