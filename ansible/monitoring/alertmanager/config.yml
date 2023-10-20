@@ -9,6 +9,6 @@ receivers:
     smarthost: smtp.gmail.com:587
     auth_username: "yg.herve@gmail.com"
     auth_identity: "yg.herve@gmail.com"
-    auth_password: "susixougkhgrxrcr"
+    $AUTH_PASSWORD
   discord_configs:
-  - webhook_url: https://discord.com/api/webhooks/1164539891464556655/xjvuQGhRI35B3YrjAy5qmQdHPpZWtbC4t5txvU8-nTq8qhfTw3Wj2P6pVCtGSiX-A2Ln
+  - $WEBHOOK_URL

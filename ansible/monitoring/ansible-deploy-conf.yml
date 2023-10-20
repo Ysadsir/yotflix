@@ -52,6 +52,30 @@
         owner: pi
         group: pi
 
+    - name: read sensitive data file and find auth_password
+      shell:
+        cmd: cat /opt/bitnami/alertmanager/conf/.secrets | grep auth_password
+      register: auth_password
+
+    - name: read sensitive data file and find webhook_url
+      shell:
+        cmd: cat /opt/bitnami/alertmanager/conf/.secrets | grep webhook_url
+      register: webhook_url
+
+    - name: Replace auth_password in alertmanager config file
+      ansible.builtin.lineinfile:
+        path: /opt/bitnami/alertmanager/conf/config.yml
+        regexp: '^\s\s\s\s\$AUTH_PASSWORD'
+        line: '    {{ auth_password.stdout }}'
+        state: present
+
+    - name: Replace webhook_url in alertmanager config file
+      ansible.builtin.lineinfile:
+        path: /opt/bitnami/alertmanager/conf/config.yml
+        regexp: '^\s\s-\s\$WEBHOOK_URL'
+        line: '  - {{ webhook_url.stdout }}'
+        state: present
+
     - name: Ensure directory exists for grafana conf
       become: yes
       ansible.builtin.file:

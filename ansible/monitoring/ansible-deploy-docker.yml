@@ -8,9 +8,9 @@
         name: docker-compose-plugin
         state: present
 
-    - name: Copy docker-compose file
+    - name: Copy docker-compose.yml
       ansible.builtin.copy:
-        src: ../../docker/monitoring/docker-compose.yml
+        src: ../../docker/monitoring/
         dest: /opt/docker/conf/
         mode: '0644'
         owner: pi
