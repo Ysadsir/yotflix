@@ -15,12 +15,8 @@ services:
     ports:
       - 9093:9093
     volumes:
-<<<<<<< HEAD
-      - /opt/bitnami/alertmanager/conf/alertmanager.yml:/opt/bitnami/alertmanager/conf/alertmanager.yml
-=======
       - /opt/bitnami/alertmanager/conf:/opt/bitnami/alertmanager/conf
     restart: unless-stopped
->>>>>>> 5e1987a... Encrypt sensitive data
     depends_on: 
       - prometheus
 
