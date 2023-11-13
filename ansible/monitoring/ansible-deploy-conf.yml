@@ -63,18 +63,16 @@
       register: webhook_url
 
     - name: Replace auth_password in alertmanager config file
-      ansible.builtin.lineinfile:
+      ansible.builtin.replace:
         path: /opt/bitnami/alertmanager/conf/config.yml
         regexp: '^\s\s\s\s\$AUTH_PASSWORD'
-        line: '    {{ auth_password.stdout }}'
-        state: present
+        replace: '    {{ auth_password.stdout }}'
 
     - name: Replace webhook_url in alertmanager config file
-      ansible.builtin.lineinfile:
+      ansible.builtin.replace:
         path: /opt/bitnami/alertmanager/conf/config.yml
         regexp: '^\s\s-\s\$WEBHOOK_URL'
-        line: '  - {{ webhook_url.stdout }}'
-        state: present
+        replace: '  - {{ webhook_url.stdout }}'
 
     - name: Ensure directory exists for grafana conf
       become: yes
