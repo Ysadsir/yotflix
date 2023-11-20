@@ -1,5 +1,5 @@
 - name: monitoring
-  hosts: server1
+  hosts: pi-server1
   vars_files:
     - secrets.yml
   tasks:

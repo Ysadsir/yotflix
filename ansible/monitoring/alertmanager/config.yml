@@ -9,9 +9,6 @@ route:
       receiver: email
       continue: true
     - matchers:
-        - team="support"
-      receiver: jira
-    - matchers:
         - team="on-call"
       receiver: discord
 
@@ -26,8 +23,6 @@ receivers:
     $AUTH_PASSWORD
   discord_configs:
   - $WEBHOOK_URL
-  webhook_configs:
-  - url: http://ysadsir.atlassian.net/jira/software/projects/WT
 - name: email
   email_configs:
   - to: "yg.herve@gmail.com"
@@ -39,6 +34,3 @@ receivers:
 - name: discord
   discord_configs:
   - $WEBHOOK_URL
-- name: jira
-  webhook_configs:
-  - url: http://ysadsir.atlassian.net/jira/software/projects/WT
