@@ -30,7 +30,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Deployments for jellyfin, deluge and jackett in my own k3s cluster made with 3 Raspberry Pi. A fourth pi with Ubuntu and a 1 To HDD for monitoring (Prometheus, G Grafana and Arduino).
+Deployments for jellyfin, deluge and jackett in my own k3s cluster made with 3 Raspberry Pi. A fourth pi with Ubuntu and a 1 To HDD for monitoring (Prometheus, Grafana and Arduino).
 
 ### Built With
 
