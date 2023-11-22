@@ -17,7 +17,6 @@ spec:
       labels:
         app: jackett
     spec:
-      nodeName: pi-node02      
       dnsPolicy: "None"
       dnsConfig:
         nameservers:
