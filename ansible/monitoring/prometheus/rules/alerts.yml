@@ -10,29 +10,20 @@ groups:
       annotations:
         summary: Server not ready
 
-    - alert: ClusterNodeMasterNotReady 
-      expr:  job:clusterK3sUp == 0 or kube_node_status_condition{condition="Ready", node="pi-master", status="true"} != 1
+    - alert: NodesNotReady 
+      expr:  job:clusterK3sUp == 0 or job:nodesDown != 0
       for: 1m
       labels:
         severity: critical
         team: support
       annotations:
-        summary: Node master k3s not ready 
+        summary: One of the nodes is not ready
 
-    - alert: ClusterNode01NotReady 
-      expr: job:clusterK3sUp == 0 or kube_node_status_condition{condition="Ready", node="pi-node01", status="true"} != 1
+    - alert: AppsNotReady
+      expr: job:clusterK3sUp == 0 or job:deploymentsDown != 0 or job:podsDown !=0
       for: 1m
       labels:
         severity: warning
         team: on-call
       annotations:
-        summary: Node worker 1 k3s not ready 
-
-    - alert: ClusterNode02NotReady 
-      expr: job:clusterK3sUp == 0 or kube_node_status_condition{condition="Ready", node="pi-node02", status="true"} != 1
-      for: 1m
-      labels:
-        severity: warning
-        team: on-call
-      annotations:
-        summary: Node worker 2 k3s not ready 
+        summary: One of the apps is not ready
