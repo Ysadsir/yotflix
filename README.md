@@ -30,9 +30,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://cv.ygherve.online/resume.html)
-
-Deployments for jellyfin, deluge and jackett in my own k3s cluster made with 3 Raspberry Pi. A fourth pi with Ubuntu and a 1 To HDD for monitoring (Prometheus and grafana).
+Deployments for jellyfin, deluge and jackett in my own k3s cluster made with 3 Raspberry Pi. A fourth pi with Ubuntu and a 1 To HDD for monitoring (Prometheus, Grafana and Arduino).
 
 ### Built With
 
@@ -43,6 +41,7 @@ Deployments for jellyfin, deluge and jackett in my own k3s cluster made with 3 R
 * [![Jellyfin][Jellyfin]][Jellyfin-url]
 * [![Prometheus][Prometheus]][Prometheus-url]
 * [![Grafana][Grafana]][Grafana-url]
+* [![Arduino][Arduino]][Arduino-url]
   
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -135,4 +134,5 @@ Project Link: [https://github.com/Ysadsir/yotflix](https://github.com/Ysadsir/yo
 [Prometheus-url]: https://prometheus.io/
 [Grafana]: https://img.shields.io/badge/grafana-000000?style=for-the-badge&logo=grafana&logoColor=F46800
 [Grafana-url]: https://grafana.com/
-  
+[Arduino]: https://img.shields.io/badge/arduino-FFFFFF?style=for-the-badge&logo=arduino&logoColor=00878F
+[Arduino-url]: https://www.arduino.cc/
