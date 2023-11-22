@@ -32,9 +32,8 @@ bool appDown = false;
 
 const char* alertName = "";
 const char* serverAlert = "NodeExporterDown";
-const char* nodeMasterAlert = "ClusterNodeMasterNotReady";
-const char* node01Alert = "ClusterNode01NotReady";
-const char* node02Alert = "ClusterNode02NotReady";
+const char* nodesAlert = "NodesNotReady";
+const char* appsAlert = "AppsNotReady";
 
 //////////////////// LEDS /////////////////////////
 // The pins for the leds
@@ -200,12 +199,12 @@ void parseJSON(String payload) {
     if (strcmp (alertName ,serverAlert) == 0){
       serverDown = true;
     }
-    else if (strcmp (alertName ,nodeMasterAlert) == 0 || strcmp (alertName ,node01Alert) == 0 || strcmp (alertName ,node02Alert) == 0) {
+    else if (strcmp (alertName ,nodesAlert) == 0) {
       nodeDown = true; 
     }
- //   else {
- //     appDown = true;
- //   }
+    else if (strcmp (alertName ,appsAlert) == 0) {
+      appDown = true;
+    }
   }
 
   delay(5000);
