@@ -9,3 +9,12 @@ groups:
 
     - record: job:clusterK3sUp
       expr: up{instance="pi-master:8080", job="kube-state-metrics"}
+
+    - record: job:nodesDown
+      expr: sum(kube_node_status_condition{condition="Ready", status="unknown"}) > 0 or sum(kube_node_status_condition{condition="Ready", status="false"}) > 0
+
+    - record: job:deploymentsDown
+      expr: sum(kube_deployment_status_condition{namespace="yotflix", condition="Available", status="false"}) > 0
+
+    - record: job:podsDown
+      expr: sum(kube_pod_status_scheduled{namespace="yotflix", condition="false"}) > 0
