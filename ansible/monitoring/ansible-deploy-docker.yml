@@ -3,10 +3,14 @@
   vars_files:
     - secrets.yml
   tasks:
-    - name: Ensure docker compose is present
-      ansible.builtin.apt:
-        name: docker-compose-plugin
-        state: present
+    - name: get packages fact
+      package_facts:
+        manager: auto
+
+    - name: Install docker
+      include_role: 
+        name: install-docker
+      when: "'docker-compose-plugin' not in ansible_facts.packages"
 
     - name: Copy docker-compose.yml
       ansible.builtin.copy:

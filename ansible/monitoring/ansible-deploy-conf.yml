@@ -3,6 +3,20 @@
   vars_files:
     - secrets.yml
   tasks:
+#    - name: Disable password authentification
+#      become: yes
+#      ansible.builtin.lineinfile:
+#        dest: /etc/ssh/sshd_config
+#        regexp: "^#PasswordAuthentication"
+#        line: "PasswordAuthentification no"
+#        state: present
+
+#    - name: Add authorized key for current user
+#      ansible.posix.authorized_key:
+#        user: pi
+#        key: "{{ lookup('file', '~/.ssh/ansible.pub') }}"
+#        state: present
+
     - name: Ensure all directories are removed before creating
       tags: delete_dir
       become: yes
